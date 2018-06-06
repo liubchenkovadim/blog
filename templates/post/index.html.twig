@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+
+    {% for posts in post %}
+
+
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne{{ posts.id }}">
+                    <h5 class="mb-0">
+
+                        <table class="table table-striped">
+                            <tr>
+                                <button class="btn btn-link"  >
+                                    <td class="td_l">{{ posts.title }}</td>
+                                </button>
+                                <td class="td_r">{{ posts.datePublic|date("Y-m-d H:i:s") }}</td>
+                            </tr>
+                        </table>
+
+
+                    </h5>
+                </div>
+
+
+                <div class="card-body">
+                    <div class="viewtext">
+                        {{ posts.text }} <br><br>
+                    </div>
+
+                    <a href="{{ path('view_post',{'id': posts.id}) }}" class="btn btn-primary">Читать дальше</a>
+                </div>
+
+            </div>
+        </div>
+
+
+    {% endfor %}
+{% endblock %}
